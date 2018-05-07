@@ -1,0 +1,184 @@
+{template '_header'}
+{template 'merch/common'}
+<div class="fui-page page-merch-register">
+    <div class="fui-content">
+
+        <img class="regbg" src="{if empty($set['regbg'])}../addons/ewei_shopv2/plugin/merch/template/mobile/default/static/images/regbg.png{else}{php echo tomedia($set['regbg'])}{/if}"/>
+
+        {if !empty($user)}
+
+        {else}
+
+                {if !empty($reg)}
+
+                        {if $reg['status']==-1}
+
+                        <div class="fui-alert fui-alert-danger">
+                            <p>您的申请被驳回：</p>
+                            <p>{$reg['reason']}</p>
+                            <p>您也可以修改信息重新提交</p>
+                        </div>
+
+                        {else}
+                        <div class="fui-alert fui-alert-warning">
+                            <p>您已经提交了信息，请等待我们联系您!</p>
+                            <p>您也可以修改信息重新提交</p>
+                        </div>
+                        {/if}
+                {/if}
+
+        <div class="fui-cell-group">
+            <div class="fui-cell must ">
+                <div class="fui-cell-label">商户名称</div>
+                <div class="fui-cell-info"><input type="text" class="fui-input" id="merchname" placeholder="商户名称" value="{$reg['merchname']}"/></div>
+            </div>
+            <div class="fui-cell must ">
+                <div class="fui-cell-label">主营项目</div>
+                <div class="fui-cell-info"><input type="text" class="fui-input" id="salecate" placeholder="例如鞋帽, 化妆品等" value="{$reg['salecate']}"/></div>
+            </div>
+
+            <div class="fui-cell">
+                <div class="fui-cell-label">商户地址</div>
+                <div class="fui-cell-info"><input type="text" class="fui-input" id="address" placeholder="商户详细地址" maxlength="120" value="{$reg['address']}"/></div>
+            </div>
+            <div class="fui-cell">
+                <div class="fui-cell-label">商户电话</div>
+                <div class="fui-cell-info"><input type="text" class="fui-input" id="tel" placeholder="座机、手机号" maxlength="24" value="{$reg['tel']}"/></div>
+            </div>
+            <div class="fui-cell ">
+                <div class="fui-cell-label">简单介绍</div>
+                <div class="fui-cell-info"><textarea id="desc" placeholder="简单介绍下商户">{$reg['desc']}</textarea></div>
+            </div>
+        </div>
+        <div class="fui-cell-group">
+            <div class="fui-cell must ">
+                <div class="fui-cell-label">联系人</div>
+                <div class="fui-cell-info"><input type="text" class="fui-input" id="realname" placeholder="您的称呼" value="{$reg['realname']}"></div>
+            </div>
+            <div class="fui-cell must ">
+                <div class="fui-cell-label">手机号</div>
+                <div class="fui-cell-info"><input type="tel" class="fui-input" id="mobile" maxlength='11' placeholder="您的手机号" value="{$reg['mobile']}"/></div>
+            </div>
+            <div class="fui-cell-tip">请仔细填写联系方式，保证我们能尽快联系到您~</div>
+
+        </div>
+
+        <div class="fui-cell-group">
+            <div class="fui-cell must ">
+                <div class="fui-cell-label">帐号</div>
+                <div class="fui-cell-info"><input type="text" class="fui-input" id="uname" placeholder="帐号" value="{$reg['uname']}" maxlength="20"></div>
+            </div>
+            <div class="fui-cell must ">
+                <div class="fui-cell-label">密码</div>
+                <div class="fui-cell-info"><input type="tel" class="fui-input" id="upass" placeholder="密码" value="" maxlength="20"/></div>
+            </div>
+            <div class="fui-cell-tip">用于登录多商户后台,请认真填写</div>
+
+        </div>
+			
+        <div class="fui-cell-group">
+            <div class="fui-cell must ">
+                <div class="fui-cell-label fui-cell-auto">商铺/门店照片</div>
+				{if $set['shopimgmax'] > 1}<div class="fui-cell-info" style='color:#ff5555;font-size:0.5rem'>最多{$set['shopimgmax']}张</div>{/if}
+            </div>
+		
+			<div class="fui-cell post-image" style="display: block;">
+				<div class="fui-cell-info">
+					<ul class="fui-images fui-images-md">
+						{if !empty($shopimg)}
+						{loop $shopimg $imgurl}
+						<li style="background-image:url('{php echo tomedia($imgurl)}')" class="image image-md " data-filename="{$imgurl}"><span class="image-remove">X</span><input type="hidden" name="" value="{$imgurl}"></li>
+						{/loop}
+						{/if}
+					</ul>
+					<div class="fui-uploader img-uploader fui-uploader-md" data-max="{if empty($set['shopimgmax'])}1{else}{$set['shopimgmax']}{/if}" data-count="{php echo count($shopimg)}" {if count($shopimg) == $set['shopimgmax']}style='display:none'{/if}>
+						<input type="file" multiple="multiple" aria-multiselectable="true" name="imgFile1[]" id="imgFile1" accept="image/*">
+					</div>
+				</div>
+			</div>
+            <div class="fui-cell must ">
+                <div class="fui-cell-label fui-cell-auto">营业执照</div>		
+            </div>
+			<div class="fui-cell post-image" style="display: block;">
+				<div class="fui-cell-info">
+					<ul class="fui-images fui-images-md">
+					{if !empty($certificate)}
+					<li style="background-image:url('{php echo tomedia($certificate)}')" class="image image-md " data-filename="{$certificate}"><span class="image-remove">X</span><input type="hidden" name="" value="{$certificate}"></li>
+					{/if}
+					</ul>
+					<div class="fui-uploader img-uploader2 fui-uploader-md" data-max="1" data-count="{if !empty($certificate)}1{else}0{/if}" {if !empty($certificate)}style='display:none'{/if}>
+						<input type="file" multiple="multiple" name="imgFile2[]" id="imgFile2" accept="image/*">
+					</div>
+				</div>
+			</div>
+			
+            <div class="fui-cell">
+                <div class="fui-cell-label fui-cell-auto">其它证书</div>
+				{if $set['othercertificate'] > 1}<div class="fui-cell-info" style='color:#ff5555; margin-left:1rem;font-size:0.5rem'>最多{$set['othercertificate']}张</div>{/if}
+            </div>
+			<div class="fui-cell post-image" style="display: block;">
+				<div class="fui-cell-info">
+					<ul class="fui-images fui-images-md">
+						{if !empty($othercertificate)}
+						{loop $othercertificate $imgurl}
+						<li style="background-image:url('{php echo tomedia($imgurl)}')" class="image image-md " data-filename="{$imgurl}"><span class="image-remove">X</span><input type="hidden" name="" value="{$imgurl}"></li>
+						{/loop}
+						{/if}
+					</ul>
+					<div class="fui-uploader img-uploader3 fui-uploader-md" data-max="{if empty($set['othercertificate'])}1{else}{$set['othercertificate']}{/if}" data-count="{php echo count($othercertificate)}" {if count($othercertificate) == $set['othercertificate']}style='display:none'{/if}>
+						<input type="file" multiple="multiple" aria-multiselectable="true" name="imgFile3[]" id="imgFile3" accept="image/*">
+					</div>
+				</div>
+			</div>
+		
+        </div>
+
+                {if $template_flag}
+
+                {template 'diyform/formfields'}
+
+                {/if}
+
+
+                {if $set['open_protocol'] == 1}
+                <div class="fui-cell-group">
+                    <div class="fui-cell small ">
+                        <div class="fui-cell-info">
+
+                            <label class="checkbox-inline">
+                                <input type="checkbox" class="fui-checkbox-primary" id="agree" {if !empty($reg)}checked{/if}/> 我已经阅读并了解了<a id="btn-apply" style="color:#337ab7;">【{$apply_set['applytitle']}】</a>。
+                            </label>
+
+                        </div>
+                    </div>
+
+                </div>
+                {/if}
+
+                <a class="btn btn-warning btn-submit block"> {if empty($reg)}立即申请入驻{else}重新提交申请{/if}</a>
+        {/if}
+
+        <div class="pop-apply-hidden" style="display: none;">
+            <div class="verify-pop pop">
+                <div class="close"><i class="icon icon-roundclose"></i></div>
+                <div class="qrcode" style='width: 90%;height:18rem;margin-left: -45%;'>
+                    <div class="inner" style='height:15rem;'>
+                        <div class="title">{$set['applytitle']}</div>
+                        <div class="text" style='height:13rem;'>{$set['applycontent']}</div>
+                    </div>
+                    <div class="inner-btn" style="padding: 0.5rem">
+                        <div class="btn btn-warning" style="width: 100%; margin: 0">我已阅读</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script language="javascript">
+        require(['../addons/ewei_shopv2/plugin/merch/static/js/register.js'], function (modal) {
+            modal.init({php echo json_encode($apply_set)});
+        })
+    </script>
+</div>
+{template '_footer'}
+

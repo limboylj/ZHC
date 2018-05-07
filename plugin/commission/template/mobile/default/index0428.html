@@ -1,0 +1,252 @@
+{template '_header'}
+<script>document.title = "{$witset['wittext']}中心"; </script>
+<script>
+    document.documentElement.style.fontSize =document.documentElement.clientWidth/750*40 +"px";
+</script>
+
+{php $imgurl='../addons/ewei_shopv2/plugin/commission/template/mobile/default/static/images/'}
+<style type="text/css">
+	.icon1 {
+		width: .8rem; height: .8rem;
+		vertical-align: -0.15em;
+		fill: currentColor;
+		overflow: hidden;
+	}
+</style>
+{template 'commission/common'}
+<div class="fui-page fui-page-current page-commission-index ">
+    <div class='fui-content navbar'>
+		<div class="fui-header-left">
+			<a class="back" onclick='location.back()'></a>
+		</div>
+		<div class="useravatar">
+			<a href="{if empty($this->set['closemyshop'])}{php echo mobileUrl('member/info')}{else}#{/if}"><img src="{$member['avatar']}" /></a>
+		</div>
+		<div class='compound-profit'>
+			<img src='{$imgurl}bgp.png'/>
+			<ul class='profit-container'>
+				<li class='profit-plot {if $dividend_level}d{$dividend_level}{/if}' style='display:none'><span></span></li>
+			</ul>
+		</div>
+		<div class='compound-main'>
+			<div class='instructions'><a href='{php echo mobileUrl('commission/instructions',['st'=>1])}'>挖矿攻略</a></div>
+			<div class='compound-line'>
+				<a href='{php echo mobileUrl('commission/witlog')}'>
+					<span class='c-name'>Z H C</span>
+					<p><span class='c-base'>{php echo floatval($member['bases'])}</span> + <span class='c-down'>{php echo floatval($lowerBase)}</span></p>
+					<i class="icon icon-pullright" style="color: #fff;font-size:1rem;"></i>
+				</a>
+			</div>
+			<div class='compound-line big'>
+				<span class='c-name'>红&nbsp;&nbsp;利</span>
+				<p><span class='c-p-num' id='compound-profit'>{php echo round(floatval($member['increased']),$showfloat)}</span>
+				<a href='{php echo mobileUrl('commission.dividendlog')}'>明细</a>
+				</p>
+			</div>
+			<div class='compound-btn'>
+				<a href='{php echo mobileUrl("commission/withdrawdividend")}'>{php echo $this->set['texts']['withdraw']}</a>
+			</div>
+		</div>
+		<div class='coin-main'>
+			<div class='coin-back'>
+				<span class='c-name'>{$_W['shopset']['fullbackmoney']['fullbacktext']}金</span>
+				<p>
+					{if !empty($fullbackData)}
+					<span class='c-back' id='backcoin'>{php echo floatval($member['credit8'])}</span>  
+					{else}
+					<span class='c-back'>{php echo floatval($member['credit8'])}</span>  
+					{/if}
+					<a href='{php echo mobileUrl('member/fullback')}'>查看详情</a></p>
+					
+			</div>
+			<div class='coin-btns'>
+				<a class='cbtn' href='{php echo mobileUrl('commission/coin',['to'=>'cash'])}'>{php echo $this->set['texts']['withdraw']}</a>
+				<a class='cbtn trans' href='{php echo mobileUrl('commission/coin',['to'=>'wit'])}'>转换</a>
+			</div>
+
+		</div>
+		<div class='credit-main'>
+			<div class='credit-show'>
+				<span class='c-name'>{$tradeset['credittext']}</span>
+				<p>
+					<span class='c-back'>{php echo number_format($member['credit1'],2)}</span>
+					{if $member['credit1'] >0} 
+					<a href='{php echo mobileUrl('goods',['ishot'=>1])}'>使 用</a>
+					{else}
+					<a href='{php echo mobileUrl('goods',['isnew'=>1])}'>获 取</a>
+					{/if}
+				</p>
+					
+			</div>
+
+		</div>
+		<div class='module-main'>
+			<section>
+				<p class='m-title'>我的推广</p>
+				<ul class='m-icons'>
+					<li>
+						<a href='{php echo mobileUrl('commission/withdraw')}'>
+							<img src='{$imgurl}reward.png'>
+							<p>{php echo $this->set['texts']['commission1']}</p>
+							<!--<span><em>{php echo number_format($member['commission_total'],2)}</em>{php echo $this->set['texts']['yuan']}</span>-->
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('commission/order')}'>
+							<img src='{$imgurl}detail.png'>
+							<p>{php echo $this->set['texts']['order']}</p>
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('commission/log')}'>
+							<img src='{$imgurl}log.png'>
+							<p>{php echo $this->set['texts']['commission_detail']}</p>
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('commission/down')}'>
+							<img src='{$imgurl}down.png'>
+							<p>{php echo $this->set['texts']['mydown']}</p>
+						</a>
+					</li>
+					{if empty($this->set['closed_qrcode'])}
+					<li>
+						<a href='{php echo mobileUrl('commission/qrcode')}'>
+							<img src='{$imgurl}qrcode.png'>
+							<p>我的智惠码</p>
+						</a>
+					</li>
+					{/if}
+				</ul>
+			</section>
+			<section>
+				<p class='m-title'>我的订单 <a href='{php echo mobileUrl('order')}'>查看全部订单</a></p>
+				<ul class='m-icons'>
+					<li>
+						<a href='{php echo mobileUrl('order',array('status'=>0))}'>
+							<img src='{$imgurl}order1.png'>
+							<p>待付款</p>
+							{if $statics['order_0']>0}<span class='red'><em>{$statics['order_0']}</em></span>{/if}
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('order',array('status'=>1))}'>
+							<img src='{$imgurl}order2.png'>
+							<p>待发货</p>
+							{if $statics['order_1']>0}<span><em>{$statics['order_1']}</em></span>{/if}
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('order',array('status'=>2))}'>
+							<img src='{$imgurl}order3.png'>
+							<p>待收货</p>
+							{if $statics['order_2']>0}<span><em>{$statics['order_2']}</em></span>{/if}
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('order',array('status'=>4))}'>
+							<img src='{$imgurl}order5.png'>
+							<p>退换货</p>
+							{if $statics['order_3']>0}<span><em>{$statics['order_3']}</em></span>{/if}
+						</a>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<p class='m-title'>我的{$tradeset['moneytext']} <span>{php echo number_format($member['credit2'],2)}</span></p>
+				<ul class='m-icons'>
+					{if $tradeset['closerecharge']}
+					<li>
+						<a href='{php echo mobileUrl('member/recharge')}'>
+							<img src='{$imgurl}recharge.png'>
+							<p>充值</p>
+						</a>
+					</li>
+					{/if}
+					{if $tradeset['withdraw']}
+					<li>
+						<a href='{php echo mobileUrl('member/withdraw')}'>
+							<img src='{$imgurl}withdraw.png'>
+							<p>提现</p>
+						</a>
+					</li>
+					{/if}
+					{if $tradeset['closemoneygive']}
+					<li>
+						<a href='{php echo mobileUrl('member/balancetransfer')}'>
+							<img src='{$imgurl}given.png'>
+							<p>转赠</p>
+						</a>
+					</li>
+					{/if}
+					<li>
+						<a href='{php echo mobileUrl('member/log')}'>
+							<img src='{$imgurl}log.png'>
+							<p>{if $tradeset['withdraw']}明细{else}充值记录{/if}</p>
+						</a>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<p class='m-title'>设置</p>
+				<ul class='m-icons'>
+					<li>
+						<a href='{php echo mobileUrl('member/bind')}{if !empty($member['mobile'])}&change=bind{/if}'>
+							<img src='{$imgurl}mobile.png'>
+							<p>{if empty($member['mobileverify']) || empty($member['mobile'])}绑定手机号{else}修改手机或密码{/if}</p>
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('member/address')}'>
+							<img src='{$imgurl}add2ress.png'>
+							<p>收货地址管理</p>
+						</a>
+					</li>
+					<li>
+						<a href='{php echo mobileUrl('member/notice')}'>
+							<img src='{$imgurl}message.png'>
+							<p>消息提醒设置</p>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</div>
+		{if !is_weixin()}
+		<div class="fui-cell-group fui-cell-click transparent">
+			<!--
+			<a class="fui-cell external changepwd" href="{if !empty($member['mobileverify'])}{php echo mobileUrl('member/changepwd')}{else}{php echo mobileUrl('member/bind')}{/if}">
+				<div class="fui-cell-text" style="text-align: center;"><p>修改密码</p></div>
+			</a>
+			-->
+			<a class="fui-cell external btn-logout">
+				<div class="fui-cell-text" style="text-align: center;"><p>退出登录</p></div>
+			</a>
+		</div>
+
+		<div class="pop-apply-hidden" style="display: none">
+			<div class="verify-pop pop">
+				<div class="close"><i class="icon icon-roundclose"></i></div>
+				<div class="qrcode">
+					<div class="inner">
+						<div class="title">{$set['applytitle']}</div>
+						<div class="text">{$set['applycontent']}</div>
+					</div>
+					<div class="inner-btn" style="padding: 0.5rem">
+						<div class="btn btn-warning" style="width: 100%; margin: 0">我已阅读</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{/if}
+		
+		{template '_copyright'}
+    </div>
+	<script language='javascript'>
+	require(['../addons/ewei_shopv2/plugin/commission/static/js/index.js'], function (modal) {
+        modal.init({ id:{if empty($dividendLog['id'])}0{else}{$dividendLog['id']}{/if},pdata:{php echo json_encode($datas)},profits:{php echo floatval($member['increased'])},backData: {php echo json_encode($fullbackData)},credit8:{$member['credit8']},showfloat:{$showfloat}});
+    });
+	</script>
+    {php $this->footerMenus()}
+</div>
+{template '_footer'}

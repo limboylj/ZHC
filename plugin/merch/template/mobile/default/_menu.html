@@ -1,0 +1,17 @@
+<div class="fui-navbar">
+
+    <a href="{php echo mobileUrl('merch.list.merchuser', array('merchid' => -1))}" class="external nav-item {if $_W['routes']=='merch.list.merchuser'}active{/if}">
+        <span class="icon icon-list"></span>
+        <span class="label">商家列表</span>
+    </a>
+    <a href="{php echo mobileUrl('commission', array('merchid' => -1))}" class="external nav-item {if $_W['routes']=='commission'}active{/if}">
+        <span class="icon icon-group top"></span>
+        <span class="label">{$_W['shopset']['witchain']['wittext']}中心</span>
+    </a>
+
+    <a href="{php echo mobileUrl('', array('merchid' => -1))}" class="external nav-item">
+        <span class="icon icon-back"></span>
+        <span class="label">返回商城</span>
+    </a>
+</div>
+

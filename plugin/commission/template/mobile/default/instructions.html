@@ -1,0 +1,109 @@
+{template '_header'}
+<link rel="stylesheet" type="text/css" href="../addons/ewei_shopv2/plugin/commission/template/mobile/default/static/css/ttmp.css" />
+<style>
+.fui-content.navbar {
+    padding-bottom:0;
+}
+</style>
+<div class='fui-page  fui-page-current'>
+	<div class="fui-header-left">
+		<a class="back single-back"></a>
+	</div>
+    <div class='fui-content navbar' style='background: #fff;'>
+		<div class='inst-container'>
+			{if $brief}
+			<div class='ititle'>
+				<p>挖矿攻略简介</p>
+				<p style='display:none;'></p>
+			</div>
+			{else}
+			<div class='ititle'>
+				<p>{$witset['wittext']}·商圈</p>
+				<p>全球首个“Dian商+区块链”应用商城</p>
+			</div>
+			{/if}
+			{if empty($brief)}
+			<section class='sblock'>
+				<div class='stitle'><span>一、{$witset['wittext']}·商圈</span></div>
+				<p>{$witset['wittext']}•商圈通过区块链技术量化并且固化网上行为价值，孵化{$witset['wittext']}，打造一种新的社会关系和经济关系。线上线下的用户和商家将共同缔造一个新的生机勃勃的{$witset['wittext']}商业生态圈。</p>
+			</section>
+			<section class='sblock'>
+				<div class='stitle'><span>二、{$witset['wittext']}·ZHC</span></div>
+				<p>智惠经济时代，{$witset['wittext']}是一种全新、消费增值、价值变现的加密数字货币。</p>
+			</section>
+			<section class='sblock'>
+				<div class='stitle'><span>三、平台宗旨</div>
+				<p>智链百业，惠达千城</p>
+			</section>
+			<section class='sblock'>
+				<div class='stitle'><span>四、{$witset['wittext']}·ZHC的价值</span></div>
+				<p>通过消费{$backset['fullbacktext']}、智能算力、区块{$witset['dividendtext']}多层次呈现，合理量化以及固化全球亿万用户在Dian商平台上创造的价值，发展面向未来的全新的商业模式。</p>
+			</section>
+			{/if}
+			<section class='sblock'>
+				<div class='stitle'><span>{if empty($brief)}五、{/if}{$witset['wittext']}·ZHC三大商品区</span></div>
+				<blockquote>1、广告商品区【会员购买获得等值商品、等值积分、等值补贴，补贴可提现（70%现金，30%积分），不提现可全额转换为ZHC，获取更多的区块{$witset['dividendtext']}收益】<br/>
+2、藏宝商品区【会员购买获得等值商品、等值积分、等值的ZHC】<br/>
+3、积分惠购区【多款商品全额抵扣，更低的价格购买更值的商品】</blockquote>
+				<span class='remark'><mark>备注：</mark>广告商品的补贴和藏宝商品藏有的ZHC按商家设定比例实行</span>
+			</section>
+			<section class='sblock'>
+				<div class='stitle'><span>{if empty($brief)}六、{/if}{$witset['wittext']}·ZHC三大核心来源</span></div>
+				<blockquote>1、注册（前2万名注册即送88枚ZHC）<br/>
+2、推广（直推奖励，佣金转换）<br/>
+3、订单（广告商品区、藏宝商品区）</blockquote>
+			</section>
+			<section class='sblock'>
+				<div class='stitle'><span>{if empty($brief)}七、{/if}{$witset['wittext']}·ZHC的获取方式</span></div>
+				<blockquote>
+1、用户注册即送88枚ZHC，前2万名即时生效。<br/>
+2、在{$witset['wittext']}商圈中购买广告商品，商家将消费款全额{$backset['fullbacktext']}给消费者，{$backset['fullbacktext']}金可提现，也可全额转换为{$witset['wittext']}·ZHC（部分{$backset['fullbacktext']}的商品按商家设定的比例进行{$backset['fullbacktext']}）。<br/>
+3、在{$witset['wittext']}商圈中购买藏宝商品，商家将等值的ZHC藏在商品中，用户下单成功后便可即时获得该商品藏的ZHC数量（部分商品按商家设定的藏链比例实行）。<br/>
+4、用户获得直接推荐玩家每天转存{$witset['wittext']}的{$witset['downwittoup']}%，不得高于自己持链量的50%。（比如您的推荐好友今天转入了1000{$witset['wittext']}，那么您将获得他的{$witset['downwittoup']}%{$witset['wittext']}算力加成，推广越多算力越大哦。）<br/>
+5、奖励您推荐的下线会员6%和4%作为您的推广奖励，可直接提现，但转成{$witset['wittext']}收益更高哦。<br/>
+6、特定小区、商铺、社区推广、商超补贴赠送。<br/>
+7、公司其他合法发行渠道。<br/>
+8、持链挖矿所产生的{$witset['dividendtext']}须在当天晚上0点之前拾取，{$witset['dividendtext']}叠加{$witset['wittext']}复利增值挖矿。
+				</blockquote>
+				<span class='remark'><mark>备注：</mark>广告商品和藏宝商品都赠送等值的积分，1个积分等值1元，积分惠购区的多款商品可全额抵扣，让您以更低的价格购买更值的商品。</span>
+			</section>
+			<section class='sblock'>
+				<div class='stitle'><span>{if empty($brief)}八、{/if}{$witset['wittext']}开采比例表：</span></div>
+				<div class='table'>
+					<hr>
+					<p><span>持链量=ZHC+{$witset['dividendtext']}</span><span> 产链比例</span></p>
+					<ul>
+						<li><span>1-299</span><span>0.5‰/日</span></li>
+						<li><span>300-9999</span><span>1‰/日</span></li>
+						<li><span>10000-99999</span><span>5‰/日</span></li>
+						<li><span>100000以上</span><span>10‰/日</span></li>
+					</ul>
+					<hr>
+					<ol>
+						<li><span>【智能开采】</span>就是你持有的{$witset['wittext']}数量按比例开采挖矿（见上表）</li>
+						<li><span>【师徒开采】</span>奖励您推荐的下线会员6%和4%作为您的推广奖励，可直接提现，但转成{$witset['wittext']}收益更高哦。</li>
+						<li><span>【节点开采】</span>你获得直接推荐玩家每天转存{$witset['wittext']}的{$witset['downwittoup']}%（见上表），不得高于你持链量的50%（比如您的推荐好友今天转入了1000{$witset['wittext']}，那么您将获得他的{$witset['downwittoup']}%{$witset['wittext']}算力加成，推广越多算力越大哦）。</li>
+						<li><span>【{$witset['dividendtext']}开采】</span>持链挖矿所产生的{$witset['dividendtext']}须在当天晚上0点之前拾取，逾期消失。{$witset['dividendtext']}叠加本人{$witset['wittext']}+好友加成{$witset['wittext']}复利增值挖矿。</li>
+					</ol>
+				</div>
+			</section>
+			{if empty($brief)}
+			<section class='sblock'>
+				<div class='stitle'><span>九、“{$witset['wittext']}·商圈”未来展望</span></div>
+				<p>以长沙为中心，逐步链接上海、杭州、青岛、北京、广州、深圳、新疆等上千个城市，产业辐射吃、住、行、游、购、娱等多种业态领域，上线国际主流货币交易所，推行币币交易，做到真实的“{$witset['wittext']}·商圈”</p>
+			</section>
+			
+			<section class='sblock'>
+				<div class='stitle'><span>十、风险提示</span></div>
+				<p>根据国家七部委关于防范数字货币的相关通知，数字资产具有极高的风险,我们强烈建议您控制风险，不要投入超过风险承受能力的资金，{$witset['wittext']}仅为数字货币的爱好者提供一个自由的网上交换平台，没有正确使用{$witset['wittext']}的人，可能会失去使用{$witset['wittext']}的权利，甚至可能会失去他们的积分、{$backset['fullbacktext']}金、{$witset['wittext']}和{$witset['dividendtext']}，对{$witset['wittext']}的投资价值不承担任何审查、担保、赔偿的责任，如果您不能接受，请不要进行转换和交易！谢谢！</p>
+			</section>
+			{/if}
+			<div class='cheer'>智慧的人<br>选择智惠的平台<br>快来，2018一起链造未来</div>
+		</div>
+    </div>
+    <script language='javascript'>
+        document.title={if empty($brief)}'{$witset['wittext']}说明'{else}'挖矿攻略'{/if};
+    </script>
+    {php $this->footerMenus()}
+</div>
+{template '_footer'}

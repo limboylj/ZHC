@@ -1,0 +1,201 @@
+.select-trans2{
+    margin: 0.5rem 0.5rem 0;
+    background: #fff;
+    border-radius: 0 0 0.3rem 0.3rem;
+}
+.tran-title{
+    background:#efefef;
+    line-height:1.6rem;
+    font-size: 0.76rem;
+    text-align:center;
+    margin-bottom: 0.4rem;
+    color: #00a1f2;
+}
+.select-trans2 .switch-tab{
+    line-height: 1.2rem;
+    font-size: 0.74rem;
+    position: relative;
+    padding: 0.5rem 0.8rem;
+    background: #f8f8f8;
+}
+.select-trans2 .switch-tab.on{
+    background-image: -webkit-linear-gradient(60deg,#76db9b,#77c7f6);
+    background-image: linear-gradient(60deg,#76db9b,#77c7f6);
+}
+.switch-tab .tab-text{
+    color: #302f2f;
+}
+.switch-tab.on .tab-text{
+    color: #fff;
+    font-size: 0.8rem;
+}
+.switch-tab label{
+    font-size: 0.7rem;
+    line-height: 0.8rem;
+    padding-top: 0.3rem;
+    color: #fee721;
+    display: none;
+}
+
+.switch-tab.on label{
+    display:block;
+}
+
+.single-back{
+    display: inline-block;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.6rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    background: rgba(203, 203, 203, 0.91);
+    z-index: 100;
+    border-radius: 50%;
+}
+
+.single-back:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-width: 2px 0 0 2px;
+    border-style: solid;
+    border-color: #555;
+    -wekbit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    left: 0.4rem;
+    top: 0.3rem;
+}
+
+.inst-container{
+    /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(35%, #f2f2f2), color-stop(70%, #ffffff), color-stop(100%, #fefcfc)); */
+    /* background: -webkit-linear-gradient(top, #ffffff 0, #f2f2f2 35%, #ffffff 70%, #fefcfc 100%); */
+    /* background: linear-gradient(to bottom, #ffffff 0, #f2f2f2 35%, #ffffff 70%, #fefcfc 100%); */
+    background: url(../images/ibg.jpg) repeat-y;
+    background-size: 100% auto;
+    }
+
+.ititle{
+    text-align: center;
+    font-weight: 600;
+    padding: 1rem 0;
+}
+.ititle p:first-child{
+    font-size: 1rem;
+    color: #f29d06;
+}
+.ititle p:last-child{
+    font-size: 0.72rem;
+    line-height: 1.4rem;
+    color: #ffd165;
+}
+
+.sblock{
+    padding: 0.5rem;
+}
+.stitle{
+    font-size: 0.8rem;
+    color: #a4ccf0;
+    padding-bottom: 0.3rem;
+}
+.stitle span{
+    display: inline-block;
+}
+.sblock>p{
+    color: #ceb439;
+    text-indent: 2em;
+}
+.sblock blockquote{
+    border: 2px dashed #f49e00;
+    padding: 0.3rem;
+    font-size: 0.7rem;
+    color: #f49e00;
+}
+.sblock .remark{
+    padding-top: 0.5rem;
+    display: block;
+    color: #efc176;
+}
+.sblock .remark mark{
+    background: transparent;
+    color: #9cc9e0;
+}
+
+.sblock .table{
+    padding: 0.5rem;
+}
+.sblock .table p{
+    display: inline-block;
+    width: 100%;
+    padding: 0 5%;
+    margin-top: 0.3rem;
+}
+.sblock .table p span{
+    display: inline-block;
+    color: #d2a41d;
+}
+.sblock .table p span:first-child{
+    float: left;
+}
+.sblock .table p span:last-child{
+    float: right;
+}
+.sblock .table hr{
+    width: 90%;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px dashed #f29b10;
+}
+.sblock .table ul{
+    width: 90%;
+    margin: 0.4rem auto 0;
+}
+.sblock .table ul li{
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    line-height: 1rem;
+    font-size: 0.66rem;
+}
+.sblock .table ul li span{
+    display: inline-block;
+    width: 50%;
+}
+.sblock .table ul li span:first-child{
+    float: left;
+    color: #f5a103;
+}
+.sblock .table ul li span:last-child{
+    float: right;
+    text-align: right;
+    color: #f5a103;
+}
+.sblock .table ol{
+    margin: 0.6rem auto 0;
+    font-size: 0.67rem;
+    padding-left: 1rem;
+    line-height: 1rem;
+    width: 94%;
+}
+.sblock .table ol li{
+    margin-bottom: 0.3rem;
+    color: #fecc81;
+}
+.sblock .table ol li span{
+    color: #d97e21;
+}
+.cheer{
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.5rem;
+    padding: 1rem 0;
+    background: url(../images/ibbg.jpg) repeat-y;
+    color: #1d1a8b;
+    background-size: 100% auto;
+    margin-top: 0.6rem;
+    font-weight: 600;
+}
+
+
+
